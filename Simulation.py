@@ -6,12 +6,21 @@ import threading
 
 class Simulation:
 
-    def get_num_messages_from_input(self, default_value):
+    def __init__(self, dft_num_messages=1000, dft_max_message_length=100, dft_num_senders=10, dft_failure_rate=0.2, dft_wait_time_mean=200, dft_wait_time_std=10, dft_update_interval=1000):
+        self.dft_num_messages = dft_num_messages
+        self.dft_max_message_length = dft_max_message_length
+        self.dft_num_senders = dft_num_senders
+        self.dft_failure_rate = dft_failure_rate
+        self.dft_wait_time_mean = dft_wait_time_mean
+        self.dft_wait_time_std = dft_wait_time_std
+        self.dft_update_interval = dft_update_interval
+
+    def get_num_messages_from_input(self):
         while True:
             input_num_messages = input(
-                "How many messages would you like to send? Please provide an integer value. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=default_value))
+                "How many messages would you like to send? Please provide an integer value. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=self.dft_num_messages))
             if input_num_messages.strip() == "":
-                return default_value
+                return self.dft_num_messages
             try:
                 num_messages = int(input_num_messages)
                 if num_messages > 0:
@@ -27,12 +36,12 @@ class Simulation:
                 print(
                     "The input you provided is not a valid number or string. Please try again.\n")
 
-    def get_max_message_length_from_input(self, default_value):
+    def get_max_message_length_from_input(self):
         while True:
             input_max_message_length = input(
-                "What is the maximum length of each message? Please provide an integer value. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=default_value))
+                "What is the maximum length of each message? Please provide an integer value. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=self.dft_max_message_length))
             if input_max_message_length.strip() == "":
-                return default_value
+                return self.dft_max_message_length
             try:
                 max_message_length = int(input_max_message_length)
                 # Negative number
@@ -48,12 +57,12 @@ class Simulation:
                 print(
                     "The input you provided is not a valid number or string. Please try again.\n")
 
-    def get_num_sender_from_input(self, num_messages, default_value):
+    def get_num_sender_from_input(self, num_messages):
         while True:
             input_num_senders = input(
-                "How many senders would you like to use? Please provide an integer value. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=default_value))
+                "How many senders would you like to use? Please provide an integer value. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=self.dft_num_senders))
             if input_num_senders.strip() == "":
-                return default_value
+                return self.dft_num_senders
             try:
                 num_senders = int(input_num_senders)
                 # Negative number
@@ -73,12 +82,12 @@ class Simulation:
                 print(
                     "The input you provided is not a valid number or string. Please try again.\n")
 
-    def get_failure_rate_from_input(self, default_value):
+    def get_failure_rate_from_input(self, sender_num):
         while True:
             input_failure_rate = input(
-                "What is the failure rate of each sender? Please provide a float value between 0 and 1. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=default_value))
+                "What is the failure rate of sender {sender_num}? Please provide a float value between 0 and 1. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=self.dft_failure_rate, sender_num=sender_num))
             if input_failure_rate.strip() == "":
-                return default_value
+                return self.dft_failure_rate
             try:
                 failure_rate = float(input_failure_rate)
                 # Deal with out of range failure rate
@@ -95,12 +104,12 @@ class Simulation:
                 print(
                     "The input you provided is not a valid number or string. Please try again.\n")
 
-    def get_wait_time_mean_from_input(self, default_value):
+    def get_wait_time_mean_from_input(self, sender_num):
         while True:
             input_wait_time_mean = input(
-                "What is the mean wait time in ms of each sender? Please provide a positive int value. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=default_value))
+                "What is the mean wait time in ms of sender {sender_num}? Please provide a positive int value. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=self.dft_wait_time_mean, sender_num=sender_num))
             if input_wait_time_mean.strip() == "":
-                return default_value
+                return self.dft_wait_time_mean
             try:
                 wait_time_mean = int(input_wait_time_mean)
                 # Negative number
@@ -116,12 +125,12 @@ class Simulation:
                 print(
                     "The input you provided is not a valid number or string. Please try again.\n")
 
-    def get_wait_time_std_from_input(self, default_value):
+    def get_wait_time_std_from_input(self, sender_num):
         while True:
             input_wait_time_std = input(
-                "What is the standard deviation of the wait time in ms of each sender? Please provide a positive int value. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=default_value))
+                "What is the standard deviation of the wait time in ms of sender {sender_num}? Please provide a positive int value. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=self.dft_wait_time_std, sender_num=sender_num))
             if input_wait_time_std.strip() == "":
-                return default_value
+                return self.dft_wait_time_std
             try:
                 wait_time_std = int(input_wait_time_std)
                 # Negative number
@@ -138,12 +147,12 @@ class Simulation:
                 print(
                     "The input you provided is not a valid number or string. Please try again.\n")
 
-    def get_update_interval_from_input(self, default_value):
+    def get_update_interval_from_input(self):
         while True:
             input_update_interval = input(
-                "What is the update interval in ms of the monitor? Please provide a positive integer value. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=default_value))
+                "What is the update interval in ms of the monitor? Please provide a positive integer value. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=self.dft_update_interval))
             if input_update_interval.strip() == "":
-                return default_value
+                return self.dft_update_interval
             try:
                 update_interval = int(input_update_interval)
                 # Negative number
@@ -162,20 +171,19 @@ class Simulation:
 
     def main(self):
         # Create a new producer with the given number of messages and max message length
-        num_messages = self.get_num_messages_from_input(1000)
-        max_message_length = self.get_max_message_length_from_input(100)
+        num_messages = self.get_num_messages_from_input()
+        max_message_length = self.get_max_message_length_from_input()
         producer = Producer(
             num_messages, max_message_length)
         producer.generate_messages()
 
-        # Obtain parameters for Senders
-        num_senders = self.get_num_sender_from_input(num_messages, 10)
-        failure_rate = self.get_failure_rate_from_input(0.2)
-        wait_time_mean = self.get_wait_time_mean_from_input(100)
-        wait_time_std = self.get_wait_time_std_from_input(20)
         # Generate senders
+        num_senders = self.get_num_sender_from_input(num_messages)
         senders = []
         for i in range(num_senders):
+            failure_rate = self.get_failure_rate_from_input(i + 1)
+            wait_time_mean = self.get_wait_time_mean_from_input(i + 1)
+            wait_time_std = self.get_wait_time_std_from_input(i + 1)
             senders.append(Sender(failure_rate=failure_rate,
                            wait_time_mean=wait_time_mean, wait_time_std=wait_time_std))
 
@@ -197,7 +205,7 @@ class Simulation:
             senders[i].add_message_to_queue(message)
 
         # Obtain the update interval for the monitor
-        update_interval = self.get_update_interval_from_input(10)
+        update_interval = self.get_update_interval_from_input()
         # Create a new monitor with the given update interval
         monitor = Monitor(update_interval, senders)
 
