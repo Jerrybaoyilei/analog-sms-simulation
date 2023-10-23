@@ -1,5 +1,6 @@
 import queue
 import random
+import time
 
 
 class Sender:
@@ -11,23 +12,29 @@ class Sender:
         self.wait_time_mean = wait_time_mean
         self.wait_time_std = wait_time_std
 
-    def fill_messages_queue(self, message, num_messages):
-        for i in range(num_messages):
-            self.messages_queue.put(message)
+    def add_message_to_queue(self, message):
+        self.messages_queue.put(message)
 
     def send_message(self):
-        message = self.messages_queue.get()
-        # Prevent negative wait time
-        wait_time = max(0, random.normalvariate(
-            self.wait_time_mean, self.wait_time_std))
-        # Update total time
-        self.total_time += wait_time
-        # Update average time per message
-        self.average_time = self.total_time / self.success_counter
-        rand_failure = random.random()
-        # If fail, put the message back in the queue
-        if rand_failure < self.failure_rate:
-            self.failure_counter += 1
-            self.messages_queue.put(message)
-        else:
-            self.success_counter += 1
+        try:
+            message = self.messages_queue.get()
+            # Prevent negative wait time
+            wait_time = max(0, random.normalvariate(
+                self.wait_time_mean, self.wait_time_std))
+            # Wait to simulating sending a message, in ms
+            time.sleep(wait_time / 1000)
+            # Update total time
+            self.total_time += wait_time
+            # Simluating a failure
+            rand_failure = random.random()
+            # If failure, put the message back in the queue
+            if rand_failure < self.failure_rate:
+                self.failure_counter += 1
+                self.messages_queue.put(message)
+            # If success, update success counter and average time
+            else:
+                self.success_counter += 1
+                # Update average time per message
+                self.average_time = self.total_time / self.success_counter
+        except queue.Empty:
+            return

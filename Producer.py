@@ -1,55 +1,48 @@
+import queue
+import string
+
+
 class Producer:
 
-    def __init__(self, num_senders, message="", num_message=1000, max_message_length=100):
-        self.num_senders = num_senders
-        self.message = message
-        self.num_message = num_message
+    def __init__(self, num_messages=1000, max_message_length=100):
+        self.num_messages = num_message
         self.max_message_length = max_message_length
-        self.set_messages()
+        self.messages_list = []
 
-    def get_num_senders(self):
-        return self.num_senders
+    def get_num_messages(self):
+        return self.num_messages
 
-    def set_num_senders(self, num_senders):
-        self.num_senders = num_senders
-        self.set_messages()
-
-    def get_num_message(self):
-        return self.num_message
-
-    def set_num_message(self, num_message):
-        self.num_message = num_message
-        self.set_messages()
-
-    def get_message(self):
-        return self.message
-
-    def set_message(self, message):
-        self.message = message
-        self.set_messages()
+    def set_num_messages(self, num_message):
+        self.num_messages = num_message
+        self.generate_messages(
+            self.characters, self.max_message_length, self.num_messages)
 
     def get_max_message_length(self):
         return self.max_message_length
 
     def set_max_message_length(self, max_message_length):
-        self.max_message_length = max_message_length
-        # If the max_message_length is less than the length of the message, then truncate the message
-        if self.max_message_length < len(self.message):
+        # If the new max message length is less than the current message length, recreate messages
+        if self.max_message_length < max_message_length:
             print(
-                "Truncating message to max_message_length; you can always set the message to a shorter message")
-            self.message = self.message[:self.max_message_length]
-            self.set_messages()
+                "Updating messages to conform with the new maximum length of {max_message_length} characters".format(max_message_length=self.max_message_length))
+        self.max_message_length = max_message_length
+        self.generate_messages()
 
-    def set_messages(self):
-        self.messages = [[] for _ in range(self.num_senders)]
-        # Calculate the number of messages per sender
-        num_messages_per_sender = self.num_message // self.num_senders
-        # Calculate the number of messages left over (i.e., n), which will be assigned to the first nth senders
-        num_messages_left = self.num_message % self.num_senders
-        # Assign the messages to the senders
-        for i in range(self.num_senders):
-            for j in range(num_messages_per_sender):
-                self.messages[i].append(self.message)
-            # Assign the leftover messages to the first nth senders
-            if i < num_messages_left:
-                self.messages[i].append(self.message)
+    def get_characters(self):
+        return self.characters
+
+    def set_characters(self, characters):
+        self.characters = characters
+        self.generate_messages(
+            self.characters, self.max_message_length, self.num_messages)
+
+    def get_messages(self):
+        return self.messages_list
+
+    def generate_messages(self):
+        self.messages_list.clear()
+        characters = string.ascii_letters + string.digits + string.punctuation
+        for i in range(self.num_messages):
+            message = ''.join(random.choice(characters)
+                              for _ in range(random.randint(1, self.max_message_length)))
+            self.messages_list.append(message)
