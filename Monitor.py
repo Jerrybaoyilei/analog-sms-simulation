@@ -20,8 +20,12 @@ class Monitor:
                                   for sender in self.senders_list])
         total_num_failures = sum([sender.get_failure_counter()
                                  for sender in self.senders_list])
-        overall_average_time_per_message = sum(
-            [sender.get_total_time() for sender in self.senders_list]) / total_num_successes
+        # Prevent division by zero
+        if total_num_successes == 0:
+            overall_average_time_per_message = "N/A"
+        else:
+            overall_average_time_per_message = sum(
+                [sender.get_total_time() for sender in self.senders_list]) / total_num_successes
         print("================================")
         print(f"Report #{report_counter}\n")
         print(f"Total number of successes: {total_num_successes}\n")

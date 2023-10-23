@@ -7,9 +7,9 @@ import threading
 class Simulation:
 
     def get_num_messages_from_input(self, default_value):
-        input_num_messages = input(
-            "How many messages would you like to send? Please provide an integer value. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=default_value))
         while True:
+            input_num_messages = input(
+                "How many messages would you like to send? Please provide an integer value. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=default_value))
             if input_num_messages.strip() == "":
                 return default_value
             try:
@@ -28,9 +28,9 @@ class Simulation:
                     "The input you provided is not a valid number or string. Please try again.\n")
 
     def get_max_message_length_from_input(self, default_value):
-        input_max_message_length = input(
-            "What is the maximum length of each message? Please provide an integer value. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=default_value))
         while True:
+            input_max_message_length = input(
+                "What is the maximum length of each message? Please provide an integer value. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=default_value))
             if input_max_message_length.strip() == "":
                 return default_value
             try:
@@ -49,9 +49,9 @@ class Simulation:
                     "The input you provided is not a valid number or string. Please try again.\n")
 
     def get_num_sender_from_input(self, num_messages, default_value):
-        input_num_senders = input(
-            "How many senders would you like to use? Please provide an integer value. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=default_value))
         while True:
+            input_num_senders = input(
+                "How many senders would you like to use? Please provide an integer value. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=default_value))
             if input_num_senders.strip() == "":
                 return default_value
             try:
@@ -74,9 +74,9 @@ class Simulation:
                     "The input you provided is not a valid number or string. Please try again.\n")
 
     def get_failure_rate_from_input(self, default_value):
-        input_failure_rate = input(
-            "What is the failure rate of each sender? Please provide a float value between 0 and 1. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=default_value))
         while True:
+            input_failure_rate = input(
+                "What is the failure rate of each sender? Please provide a float value between 0 and 1. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=default_value))
             if input_failure_rate.strip() == "":
                 return default_value
             try:
@@ -96,9 +96,9 @@ class Simulation:
                     "The input you provided is not a valid number or string. Please try again.\n")
 
     def get_wait_time_mean_from_input(self, default_value):
-        input_wait_time_mean = input(
-            "What is the mean wait time in ms of each sender? Please provide a positive int value. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=default_value))
         while True:
+            input_wait_time_mean = input(
+                "What is the mean wait time in ms of each sender? Please provide a positive int value. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=default_value))
             if input_wait_time_mean.strip() == "":
                 return default_value
             try:
@@ -215,8 +215,6 @@ class Simulation:
         for thread in sender_threads:
             thread.join()
         monitor_thread.join()
-
-        sys.exit()
 
 
 if __name__ == "__main__":
