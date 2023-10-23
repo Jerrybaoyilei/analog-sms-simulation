@@ -1,11 +1,12 @@
 import queue
+import random
 import string
 
 
 class Producer:
 
     def __init__(self, num_messages=1000, max_message_length=100):
-        self.num_messages = num_message
+        self.num_messages = num_messages
         self.max_message_length = max_message_length
         self.messages_list = []
 
