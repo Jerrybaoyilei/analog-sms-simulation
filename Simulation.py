@@ -19,6 +19,7 @@ class Simulation:
         while True:
             input_num_messages = input(
                 "How many messages would you like to send? Please provide an integer value. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=self.dft_num_messages))
+            # No user input, use default value
             if input_num_messages.strip() == "":
                 return self.dft_num_messages
             try:
@@ -61,6 +62,7 @@ class Simulation:
         while True:
             input_num_senders = input(
                 "How many senders would you like to use? Please provide an integer value. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=self.dft_num_senders))
+            # No user input, use default value
             if input_num_senders.strip() == "":
                 return self.dft_num_senders
             try:
@@ -86,6 +88,7 @@ class Simulation:
         while True:
             input_failure_rate = input(
                 "What is the failure rate of sender {sender_num}? Please provide a float value between 0 and 1. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=self.dft_failure_rate, sender_num=sender_num))
+            # No user input, use default value
             if input_failure_rate.strip() == "":
                 return self.dft_failure_rate
             try:
@@ -108,6 +111,7 @@ class Simulation:
         while True:
             input_wait_time_mean = input(
                 "What is the mean wait time in ms of sender {sender_num}? Please provide a positive int value. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=self.dft_wait_time_mean, sender_num=sender_num))
+            # No user input, use default value
             if input_wait_time_mean.strip() == "":
                 return self.dft_wait_time_mean
             try:
@@ -129,6 +133,7 @@ class Simulation:
         while True:
             input_wait_time_std = input(
                 "What is the standard deviation of the wait time in ms of sender {sender_num}? Please provide a positive int value. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=self.dft_wait_time_std, sender_num=sender_num))
+            # No user input, use default value
             if input_wait_time_std.strip() == "":
                 return self.dft_wait_time_std
             try:
@@ -151,6 +156,7 @@ class Simulation:
         while True:
             input_update_interval = input(
                 "What is the update interval in ms of the monitor? Please provide a positive integer value. If you do not provide a value, the default value of {default_value} will be used.\n".format(default_value=self.dft_update_interval))
+            # No user input, use default value
             if input_update_interval.strip() == "":
                 return self.dft_update_interval
             try:

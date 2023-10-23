@@ -40,11 +40,11 @@ class Sender:
                 # Prevent negative wait time
                 wait_time = max(0, random.normalvariate(
                     self.wait_time_mean, self.wait_time_std))
-                # Wait to simulating sending a message, in ms
+                # Wait to simulate sending a message, in ms
                 time.sleep(wait_time / 1000)
-                # Update total time
+                # Update total time spent sending messages
                 self.total_time += wait_time
-                # Simluating a failure
+                # Simluate a failure
                 rand_failure = random.random()
                 # If failure, update failure counter and put the message back in the queue
                 if rand_failure < self.failure_rate:

@@ -42,7 +42,9 @@ class Producer:
 
     def generate_messages(self):
         self.messages_list.clear()
-        characters = string.ascii_letters + string.digits + string.punctuation
+        characters = string.ascii_letters + string.digits + \
+            string.punctuation + string.whitespace
+        # Generate messages made up of random characters
         for i in range(self.num_messages):
             message = ''.join(random.choice(characters)
                               for _ in range(random.randint(1, self.max_message_length)))
