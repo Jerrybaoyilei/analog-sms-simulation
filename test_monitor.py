@@ -44,15 +44,15 @@ class TestMonitor(unittest.TestCase):
         sys.stdout = sys.__stdout__
         # Remove leading/trailing whitespace
         printed_content = captured_output.getvalue().strip()
-        expected_output = """
-              ================================
-              Report #2
-
-              Total number of successes: 23
-              Total number of failures: 3
-              Average time per message sent: 52.17391
-              ================================
-              """
+        expected_output = f"""
+        ================================
+        Report #2
+              
+        Total number of successes: 23
+        Total number of failures: 3
+        Average time per message sent: 52.17391
+        ================================
+        """
 
         # Remove leading/trailing whitespace
         self.assertEqual(printed_content, expected_output.strip())

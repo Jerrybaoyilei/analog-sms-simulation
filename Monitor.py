@@ -29,15 +29,16 @@ class Monitor:
         else:
             overall_average_time_per_message = sum(
                 [sender.get_total_time() for sender in self.senders_list]) / total_num_successes
-        print(f"""
-              ================================
-              Report #{report_counter}
+        output = f"""
+        ================================
+        Report #{report_counter}
               
-              Total number of successes: {total_num_successes}
-              Total number of failures: {total_num_failures}
-              Average time per message sent: {overall_average_time_per_message:.5f}
-              ================================
-              """)
+        Total number of successes: {total_num_successes}
+        Total number of failures: {total_num_failures}
+        Average time per message sent: {overall_average_time_per_message:.5f}
+        ================================
+        """
+        print(output)
         # Set a termination condition for recording so it won't record forever after all messages have been sent
         if total_num_successes == total_num_messages:
             return True
