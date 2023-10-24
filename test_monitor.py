@@ -1,7 +1,6 @@
 import io
 import unittest
 import sys
-from producer import Producer
 from sender import Sender
 from monitor import Monitor
 
@@ -9,7 +8,6 @@ from monitor import Monitor
 class TestMonitor(unittest.TestCase):
 
     def setUp(self):
-        producer = Producer()
         senders_list = [Sender(), Sender(), Sender()]
         self.monitor = Monitor(1000, senders_list)
 

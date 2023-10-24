@@ -1,4 +1,3 @@
-from producer import Producer
 from sender import Sender
 import time
 
