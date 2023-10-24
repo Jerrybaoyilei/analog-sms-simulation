@@ -28,14 +28,14 @@ class Simulation:
                     return num_messages
                 # Deal wtih negative number
                 else:
-                    print("Please provide a positive integer velue.\n")
+                    print("\nPlease provide a positive integer velue.\n")
             except ValueError:
-                print("Invalid input. Please provide a valid positive integer.\n")
+                print("\nInvalid input. Please provide a valid positive integer.\n")
             except OverflowError:
-                print("The number you provided is too large. Please try again.\n")
+                print("\nThe number you provided is too large. Please try again.\n")
             except TypeError:
                 print(
-                    "The input you provided is not a valid number or string. Please try again.\n")
+                    "\nThe input you provided is not a valid number or string. Please try again.\n")
 
     def get_max_message_length_from_input(self):
         while True:
@@ -49,14 +49,14 @@ class Simulation:
                 if max_message_length > 0:
                     return max_message_length
                 else:
-                    print("Please provide a positive integer velue.\n")
+                    print("\nPlease provide a positive integer velue.\n")
             except ValueError:
-                print("Invalid input. Please provide a valid positive integer.\n")
+                print("\nInvalid input. Please provide a valid positive integer.\n")
             except OverflowError:
-                print("The number you provided is too large. Please try again.\n")
+                print("\nThe number you provided is too large. Please try again.\n")
             except TypeError:
                 print(
-                    "The input you provided is not a valid number or string. Please try again.\n")
+                    "\nThe input you provided is not a valid number or string. Please try again.\n")
 
     def get_num_sender_from_input(self, num_messages):
         while True:
@@ -71,18 +71,18 @@ class Simulation:
                 if num_senders > 0:
                     if num_senders > num_messages:
                         print(
-                            "The number of senders cannot be greater than the number of messages. Please try again.\n")
+                            "\nThe number of senders cannot be greater than the number of messages. Please try again.\n")
                     else:
                         return num_senders
                 else:
-                    print("Please provide a positive integer velue.\n")
+                    print("\nPlease provide a positive integer velue.\n")
             except ValueError:
-                print("Invalid input. Please provide a valid positive integer.\n")
+                print("\nInvalid input. Please provide a valid positive integer.\n")
             except OverflowError:
-                print("The number you provided is too large. Please try again.\n")
+                print("\nThe number you provided is too large. Please try again.\n")
             except TypeError:
                 print(
-                    "The input you provided is not a valid number or string. Please try again.\n")
+                    "\nThe input you provided is not a valid number or string. Please try again.\n")
 
     def get_failure_rate_from_input(self, sender_num):
         while True:
@@ -98,14 +98,14 @@ class Simulation:
                     return failure_rate
                 # Deal with out of range failure rate
                 else:
-                    print("Please provide a float value between 0 and 1.\n")
+                    print("\nPlease provide a float value between 0 and 1.\n")
             except ValueError:
-                print("Invalid input. Please provide a valid float.\n")
+                print("\nInvalid input. Please provide a valid float.\n")
             except OverflowError:
-                print("The number you provided is too large. Please try again.\n")
+                print("\nThe number you provided is too large. Please try again.\n")
             except TypeError:
                 print(
-                    "The input you provided is not a valid number or string. Please try again.\n")
+                    "\nThe input you provided is not a valid number or string. Please try again.\n")
 
     def get_wait_time_mean_from_input(self, sender_num):
         while True:
@@ -120,14 +120,15 @@ class Simulation:
                 if wait_time_mean > 0:
                     return wait_time_mean
                 else:
-                    print("Please provide a positive float value for mean wait time.\n")
+                    print(
+                        "\nPlease provide a positive float value for mean wait time.\n")
             except ValueError:
-                print("Invalid input. Please provide a valid positive float.\n")
+                print("\nInvalid input. Please provide a valid positive float.\n")
             except OverflowError:
-                print("The number you provided is too large. Please try again.\n")
+                print("\nThe number you provided is too large. Please try again.\n")
             except TypeError:
                 print(
-                    "The input you provided is not a valid number or string. Please try again.\n")
+                    "\nThe input you provided is not a valid number or string. Please try again.\n")
 
     def get_wait_time_std_from_input(self, sender_num):
         while True:
@@ -143,14 +144,14 @@ class Simulation:
                     return wait_time_std
                 else:
                     print(
-                        "Please provide a positive float value for standard deviation of wait time.\n")
+                        "\nPlease provide a positive float value for standard deviation of wait time.\n")
             except ValueError:
-                print("Invalid input. Please provide a valid positive float.\n")
+                print("\nInvalid input. Please provide a valid positive float.\n")
             except OverflowError:
-                print("The number you provided is too large. Please try again.\n")
+                print("\nThe number you provided is too large. Please try again.\n")
             except TypeError:
                 print(
-                    "The input you provided is not a valid number or string. Please try again.\n")
+                    "\nThe input you provided is not a valid number or string. Please try again.\n")
 
     def get_update_interval_from_input(self):
         while True:
@@ -166,14 +167,14 @@ class Simulation:
                     return update_interval
                 else:
                     print(
-                        "Please provide a positive float value for the update interval.\n")
+                        "\nPlease provide a positive float value for the update interval.\n")
             except ValueError:
-                print("Invalid input. Please provide a valid positive float.\n")
+                print("\nInvalid input. Please provide a valid positive float.\n")
             except OverflowError:
-                print("The number you provided is too large. Please try again.\n")
+                print("\nThe number you provided is too large. Please try again.\n")
             except TypeError:
                 print(
-                    "The input you provided is not a valid number or string. Please try again.\n")
+                    "\nThe input you provided is not a valid number or string. Please try again.\n")
 
     def main(self):
         # Create a new producer with the given number of messages and max message length
