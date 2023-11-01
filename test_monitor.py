@@ -1,8 +1,8 @@
 import io
 import unittest
 import sys
-from sender import Sender
-from monitor import Monitor
+from Sender import Sender
+from Monitor import Monitor
 
 
 class TestMonitor(unittest.TestCase):

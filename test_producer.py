@@ -1,5 +1,5 @@
 import unittest
-from producer import Producer
+from Producer import Producer
 
 
 class TestProducer(unittest.TestCase):

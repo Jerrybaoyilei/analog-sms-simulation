@@ -1,5 +1,5 @@
 import unittest
-from sender import Sender
+from Sender import Sender
 
 
 class TestSender(unittest.TestCase):

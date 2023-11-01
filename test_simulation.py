@@ -1,10 +1,10 @@
 import unittest
 from unittest.mock import patch
 from io import StringIO
-from producer import Producer
-from sender import Sender
-from monitor import Monitor
-from simulation import Simulation
+from Producer import Producer
+from Sender import Sender
+from Monitor import Monitor
+from Simulation import Simulation
 
 
 class TestSimulation(unittest.TestCase):

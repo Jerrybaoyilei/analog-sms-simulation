@@ -1,4 +1,4 @@
-from sender import Sender
+from Sender import Sender
 import time
 
 

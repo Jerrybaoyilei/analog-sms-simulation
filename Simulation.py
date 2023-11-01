@@ -1,6 +1,6 @@
-from producer import Producer
-from sender import Sender
-from monitor import Monitor
+from Producer import Producer
+from Sender import Sender
+from Monitor import Monitor
 import threading
 
 
